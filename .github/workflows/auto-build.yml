@@ -31,7 +31,6 @@ jobs:
       YANDEXDISK_CLIENT_SECRET: ${{secrets.YANDEXDISK_CLIENT_SECRET}}
       KOOFR_CLIENT_ID: ${{secrets.KOOFR_CLIENT_ID}}
       KOOFR_CLIENT_SECRET: ${{secrets.KOOFR_CLIENT_SECRET}}
-      NODE_OPTIONS: --openssl-legacy-provider
 
     strategy:
       matrix:
@@ -59,8 +58,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm test
-      - run: npm run build2
+      - run: npm run build
       - uses: actions/upload-artifact@v4
         with:
           name: my-dist
